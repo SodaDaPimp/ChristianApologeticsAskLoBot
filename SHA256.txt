@@ -1,0 +1,5 @@
+SHA-256 of ChristianApologeticsAskLoBot.exe (version 1.2.2)
+b3a01add01a2f4f9ba4dc8f4560e3486856976bc85b293fae9bc0fa6d0246273  ChristianApologeticsAskLoBot.exe
+
+Check on Windows (PowerShell):
+  Get-FileHash .\ChristianApologeticsAskLoBot.exe

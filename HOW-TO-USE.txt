@@ -1,0 +1,332 @@
+==============================================================
+  CHRISTIAN APOLOGETICS ASKLO BOT
+  Coded in Rust. Created by SodaDaPimp - Christian Apologetics Scholar
+  Copyright 2026 Christian Apologetics Bot
+  Version 1.2.2  (Admins - keep the bot to people you trust)
+==============================================================
+
+  In this file:  What it does - What you need - One-time setup -
+  Whispers - Admins - Good to know - Files - Troubleshooting -
+  WHAT'S NEW AND WHAT'S FIXED - About
+
+WHAT IT DOES
+------------
+People in your Paltalk chat room type a command, and the bot answers
+them in the room (or by private whisper):
+
+   !asklo <question>        Ask Lo (the AI in the Logetics app) a question
+                            about Christianity, the Bible, history or
+                            philosophy.  "!ask" works too.
+   !verse John 3:16         One verse        (also ranges: Romans 8:28-30)
+   !study Psalm 23          A whole chapter
+   !verse John 3:16 nkjv    Pick the Bible for one lookup
+   !bibles                  List the Bibles available
+   !bible kjv               Choose your own Bible (remembered)
+   !verse Quran 2:255       Check a verse in the Quran (Pickthall)
+   !verse Genesis 1:1 tanakh   The Jewish Bible (JPS 1917)
+   !commands                Show everyone the full command list
+
+Answers are posted one request at a time, in a first-come line, with a
+cooldown per person so the room is never flooded.
+
+
+WHAT YOU NEED (all free)
+------------------------
+ 1. A Windows 10 or 11 PC.
+ 2. BlueStacks 5 (the Android emulator) from bluestacks.com
+ 3. The Logetics app installed inside BlueStacks and signed in to
+    your own account.  The bot uses YOUR Logetics - nothing is shared.
+ 4. The Paltalk app for Windows, signed in, with your chat room open.
+
+The program is one file: ChristianApologeticsAskLoBot.exe
+No installer, and nothing else to install (it does not need the
+Visual C++ runtime any more).  Put it in its own folder (for example
+C:\AskLoBot) - it saves its settings next to itself.
+
+
+THE WINDOW
+----------
+Three tabs along the top:
+
+   Home      The big START / STOP BOT button, ANSWER MODE (In the room
+             or Whisper only), WHO CAN USE THE BOT (Everyone or Admins
+             only), the live counters and the RECENT QUESTIONS list.
+   Settings  Your room, Admins, Answers, Bible lookups, BlueStacks
+             connection, Speed and length, Advanced.
+   Tools     Test connection, Open Logetics, Read the chat, Ask Lo and
+             Look up a verse (nothing is posted), Whisper test,
+             Diagnostics and the Activity log.
+
+The window has a fixed size, so nothing moves around or gets cut off.
+Screenshots of every tab are on the project's GitHub page.
+
+
+ONE-TIME SETUP
+--------------
+ 1. BlueStacks:  Settings -> Advanced -> Android Debug Bridge (ADB): ON.
+ 2. In BlueStacks open Logetics, sign in, and open the ASK LO tab once
+    to make sure it works.  Leave BlueStacks running.
+ 3. In Paltalk, sign in with the account the bot will speak as and OPEN
+    THE ROOM.  Keep the room window open - not minimized.
+ 4. Double-click ChristianApologeticsAskLoBot.exe.
+ 5. Settings tab -> "Find my Paltalk rooms" -> choose your room in the
+    list.  (Or just type part of the room's name.)
+ 6. Settings tab -> BlueStacks connection -> "Auto-detect ADB and port".
+ 7. Tools tab -> "Test connection", then "Read the chat".
+    You should see the room's messages listed.
+    The "Ask Lo" button shows Lo's answer without posting anything.
+ 8. Home tab -> START BOT.  Done!
+
+Tip: tick "Test mode" the first time.  The bot then only logs what it
+WOULD answer and posts nothing, so you can check it safely.
+Settings also lets you block people, change the command words and the
+waiting times.
+
+
+WHISPERS
+--------
+ * "Whisper only mode" (Home tab -> ANSWER MODE): answers go to the
+   person by private whisper instead of filling the room.  It works
+   at once, even while the bot is running.
+ * Anyone can whisper the bot:  type /  pick the bot's name, then
+   !asklo your question   - the answer always comes back by whisper.
+ * Note: Paltalk does not let an account whisper to itself, so test
+   whispers from a second account.
+
+
+ADMINS (keep the bot to people you trust)
+-----------------------------------------
+ * Settings tab -> ADMINS: type the admins' names, separated by commas,
+   spelled the way they show in the room   (example: SodaDaPimp, Pastor Joe).
+   Capital letters do not matter.
+ * Home tab -> WHO CAN USE THE BOT:
+      Everyone      - everybody in the room can use all the commands (default)
+      Admins only   - ONLY the listed admins are answered (questions, Bible
+                      commands, !commands and whispers).  Everybody else is
+                      told "Admin only mode is on right now" - in the room,
+                      or by whisper if they whispered the bot - and is not
+                      answered.  (At most once a minute per person, and the
+                      room hears it at most once every 10 seconds, so the
+                      room is never flooded.)
+   The same switch is a checkbox in Settings -> ADMINS.
+   You can flip the switch and edit the names while the bot is running.
+   Somebody who was already waiting in line when you switch Admins only
+   on is skipped (and told) if they are not an admin.
+ * If you type the commands from the bot's own Paltalk account, add that
+   name to the admin list too.
+ * A name the bot cannot read from the chat is never treated as an
+   admin.  Test mode tells nobody anything.
+ * Saved in bot_config.ini as:  admins_only = true/false
+                                admin_users = name, name
+
+
+GOOD TO KNOW
+------------
+ * The bot types into Paltalk like a person would, so it briefly takes
+   the keyboard when posting.  It works best on a PC you are not typing
+   on while it runs (or a spare PC / second Windows user).  It only
+   types while Paltalk really has the keyboard, so nothing is ever sent
+   to the wrong window.
+ * Keep the Paltalk room window tall, at the newest messages, and not
+   minimized.  BlueStacks may be covered but must stay running.
+ * Lo takes a while to answer (often 20-30 seconds) - that is normal.
+   People who ask meanwhile are told their place in line.
+ * Every question starts a fresh conversation with Lo, so a long chat
+   history can never get in the way.
+ * Questions are passed to Lo as plain English text (up to 1,500
+   characters).  A question with no English letters in it (only Arabic,
+   Hebrew, emoji or ???) is answered at once with "please ask that
+   again in English" instead of holding up the line.
+ * Scrolling the Paltalk room up is safe: while you are scrolled up the
+   bot ignores the chat, and old commands are never answered twice.
+ * Make sure the room owner and Paltalk's rules allow chat bots.
+ * Bible versions available depend on what your Logetics app is
+   licensed for.  The Quran (Pickthall, 1930) and the Tanakh
+   (JPS 1917) are public-domain texts built into the program.
+
+
+FILES THE PROGRAM CREATES (next to the .exe)
+--------------------------------------------
+   bot_config.ini       your settings (a backup .bak is kept)
+   bot_stats.ini        the all-time answer count
+   bible_choices.ini    each person's chosen Bible
+   bot_log.txt          activity log
+   bot_crash_log.txt    only if something went wrong - send it to me
+   paltalk_dump.txt, bluestacks_dump.txt
+                        only if you press the Diagnostics buttons
+
+
+IF SOMETHING DOES NOT WORK
+--------------------------
+ * "Read the chat" shows nothing: use Tools -> Diagnostics ->
+   "Inspect Paltalk window".  It saves paltalk_dump.txt next to the
+   program - send that file (and the log) to the author.
+ * Nothing happens in BlueStacks: check that ADB is ON, Logetics is
+   signed in, then press Tools -> "Test connection".
+ * Windows SmartScreen says "Windows protected your PC": this program
+   is new and not code-signed.  Click "More info" -> "Run anyway".
+ * Antivirus flags it: programs that press keys and read windows can
+   trigger false alarms.  Add the folder to your antivirus exclusions.
+   You can check the download against SHA256.txt:
+      PowerShell:  Get-FileHash .\ChristianApologeticsAskLoBot.exe
+
+
+==============================================================
+WHAT'S NEW AND WHAT'S FIXED
+==============================================================
+
+--------------------------------------------------------------
+VERSION 1.2.2   (this version)
+--------------------------------------------------------------
+ADDED
+ * ADMIN LIST.  Settings -> ADMINS: add the people who may control
+   the bot.
+ * WHO CAN USE THE BOT switch on the Home tab:
+      Everyone      - the bot answers everybody (the old behaviour,
+                      still the default).
+      Admins only   - only admins can use the commands and !asklo.
+   Works live, while the bot is running.  Saved in bot_config.ini.
+ * "ADMIN ONLY MODE IS ON" NOTICE.  When admins only is on and somebody
+   else tries a command or !asklo, the bot tells them admin only mode
+   is on right now - in the room, or by whisper when they whispered the
+   bot or Whisper only mode is on.  Rate-limited (once a minute per
+   person, once every 10 seconds for the room) so it can never flood
+   the chat.  It is sent even if the "please wait" notice is switched
+   off, and never in Test mode.
+ * "admins only" appears in the status line on the Home tab while the
+   mode is on, and a red warning shows in Settings if admins only is on
+   but the admin list is empty.
+ * The program file now shows its icon, name, version, publisher and
+   copyright in Windows (right-click -> Properties -> Details).
+
+CHANGED / RE-LINED
+ * The whole window was re-lined so everything fits: a fixed 480 x 800
+   window, tighter spacing, one-line hints under the buttons, shorter
+   stat cards, and a RECENT QUESTIONS list that always keeps room and
+   scrolls instead of being pushed out of view.  Settings and Tools
+   were re-lined the same way.
+ * The copyright lines at the bottom now use the same bold cream
+   colour and the same size as the title bar, with their own reserved
+   space under the panel.
+ * Home tab: ANSWER MODE and WHO CAN USE THE BOT are matching two-button
+   switches.
+
+FIXED
+ * RECENT QUESTIONS list was cut off at the bottom of the Home tab.
+ * The copyright / "Created By SodaDaPimp" lines at the bottom were
+   cut off or overlapped by the panel.
+ * The program no longer needs the Visual C++ runtime, so it starts on
+   PCs that never installed it.
+ * The program no longer carries folder names or the user name of the
+   PC it was built on.
+
+--------------------------------------------------------------
+EARLIER VERSIONS  (1.0 to 1.2.1 - what the program gained before this one)
+--------------------------------------------------------------
+ADDED
+ * BIBLE LOOKUPS:  !verse, !study, !bibles and !bible.  Verses are read
+   from the Study tab of your own Logetics app; ranges up to 12 verses
+   (changeable); books can be typed in full or short (Jn, 1 Cor, Song
+   of Songs); each person can choose and keep their own Bible; Bibles
+   the app does not have get a friendly note.  Chapters already read
+   are answered at once from memory.
+ * THE QURAN AND THE TANAKH built into the program.  Quran (Pickthall,
+   1930) and Tanakh (JPS 1917) work instantly, with no app and no
+   "please wait".  Surah names are understood however they are spelled
+   (Yasin / Yaseen, Al-Ikhlas / Ikhlas, "the cow", Ayat al-Kursi ...).
+   Pick them with a word after the lookup, or make one your own default
+   with !bible quran / !bible tanakh.
+ * !commands:  anybody can see the full command list.  It follows your
+   settings and never needs the app.
+ * WHISPERS:  Whisper only mode, whispering the bot, a one-line room
+   notice when Whisper only mode is on, and a Whisper test button.  The
+   bot never posts a whispered answer in the room, and checks that the
+   "whisper to" box names the right person before sending.
+ * ONE AT A TIME, FIRST COME FIRST SERVED.  People in line are told
+   their place and about how long it will take (the estimate learns how
+   long answers really take on your PC).  One place per person, a limit
+   on the line length (default 4), a "your question is being answered
+   - please wait" notice, and a per-person cooldown.  Someone who leaves
+   the room is skipped.
+ * BIG-ROOM PROTECTION.  Messages come out in line order, the room is
+   never flooded with reminders, and ordinary chat never hides a
+   request.
+ * SHORT ANSWERS option (ask Lo for 3 to 4 sentences) and a "max
+   messages per answer" limit.
+ * TEST MODE.  Reads the room and logs what it WOULD answer, posts
+   nothing.
+ * TOOLS TAB.  Test connection, Open Logetics, Read the chat, Ask Lo and
+   Look up a verse (nothing is posted), Whisper test, Diagnostics and an
+   Activity log you can save to a file.
+ * One-click Find my Paltalk rooms and Auto-detect ADB and port.
+ * Settings to block people, change the command words, the waiting
+   times and the Bible limits.
+
+IMPROVED
+ * Every question opens a new Lo conversation (before, a long chat made
+   the bot miss the newest reply and apologise although Lo had
+   answered).
+ * Long questions are passed whole, up to 1,500 characters.
+ * Lo's whole answer is posted, paragraph by paragraph, opened with the
+   asker's name and closed with [Ask Lo]; long paragraphs split after
+   a sentence.  A long answer is never cut off while Lo is still
+   writing it.
+ * The bot keeps trying by itself when Paltalk or BlueStacks is
+   minimised, covered or restarting, and carries on when it is back.
+   Pop-ups in BlueStacks ("isn't responding", permission boxes, ads)
+   are closed automatically.
+ * Posting brings Paltalk to the front, types, and puts your previous
+   window back.
+ * Settings are saved safely (a .bak copy is kept) and numbers are kept
+   inside sensible ranges.
+
+FIXED
+ * A question with no English letters (Arabic, Hebrew, emoji, ???) used
+   to freeze the whole line for up to 2.5 minutes.  It is now refused
+   at once with "please ask that again in English".
+ * Somebody typing a line that looks like a name header, a
+   "... left the chat room" notice or a [whisper] line can no longer
+   fool the bot.
+ * Scrolling the chat up could make the bot treat old messages as new.
+   Old commands that come back into view are never answered again.
+ * A settings file saved with Notepad (byte-order mark) used to reset
+   your settings.  Unreadable files are never overwritten, saves are
+   done in one piece, and UTF-16 files are read too.
+ * Settings typed into the file with silly numbers (0 ms, huge waits)
+   are now kept in a safe range.
+ * A hung adb command could hold things up past its time limit;
+   reading the BlueStacks screen is now time-boxed.
+ * A failed button on the Tools tab could leave START BOT and the other
+   buttons disabled; "Auto-detect ADB" could freeze the window.  Both
+   fixed.
+ * The crash note (bot_crash_log.txt) now lands next to the program
+   and cannot grow without limit; a damaged bot_stats.ini is kept as
+   .bad instead of being overwritten.
+ * Leftover text in Lo's message box (for example after a crash) is
+   cleared, however long it is, before the next question.
+ * The remembered Bible choices and chapters are capped so memory use
+   cannot grow forever.
+
+KNOWN LIMITS
+ * Only plain English letters can be typed into Lo (accents are
+   simplified, other alphabets are dropped).
+ * A verse number that does not exist in the app's Bible (John 3:99)
+   is only found to be missing after the bot has looked in the app, so
+   that answer takes a few seconds.
+ * The program is not code-signed yet, so Windows SmartScreen may warn
+   the first time (see above).
+
+
+ABOUT
+-----
+Christian Apologetics AskLo Bot - Coded in Rust, created by SodaDaPimp,
+Christian Apologetics Scholar: combining academic training with a
+reasoned defense of the Christian faith across history and philosophy.
+
+This is an independent project.  It is not made by, affiliated with or
+endorsed by Paltalk, Logetics or BlueStacks; those names belong to
+their owners.  Provided free, as-is, without warranty.  Please do not
+re-sell it or pass off modified copies as the original.
+
+Copyright 2026 Christian Apologetics Bot.  Coded in Rust.
+Created By SodaDaPimp.
