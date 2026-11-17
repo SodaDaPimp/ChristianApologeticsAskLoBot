@@ -1,8 +1,8 @@
-==============================================================
+
   CHRISTIAN APOLOGETICS ASKLO BOT
   Coded in Rust. Created by SodaDaPimp - Christian Apologetics Scholar
   Copyright 2026 Christian Apologetics Bot https://www.youtube.com/watch?v=aowWP99zlDI
-==============================================================
+
 
 WHAT IT DOES
 ------------
